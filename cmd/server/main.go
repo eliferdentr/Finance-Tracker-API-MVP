@@ -2,12 +2,10 @@ package main
 
 import (
 	"log"
-	"net/http"
-
+	
 	"github.com/eliferdentr/finance-tracker-app/internal/config"
 	"github.com/eliferdentr/finance-tracker-app/internal/db"
 	"github.com/eliferdentr/finance-tracker-app/internal/middleware"
-	"github.com/eliferdentr/finance-tracker-app/internal/utils"
 	"github.com/gin-gonic/gin"
 )
 
