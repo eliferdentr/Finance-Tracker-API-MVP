@@ -7,6 +7,7 @@ import (
 	"github.com/eliferdentr/finance-tracker-app/internal/config"
 	"github.com/eliferdentr/finance-tracker-app/internal/db"
 	"github.com/eliferdentr/finance-tracker-app/internal/middleware"
+	"github.com/eliferdentr/finance-tracker-app/internal/utils"
 	"github.com/gin-gonic/gin"
 )
 
@@ -43,10 +44,17 @@ func main() {
 	router.Use(middleware.Logger())
 	router.Use(middleware.AuthMiddleware(cfg.JWTSecret))
 
-	
-	router.GET("/health", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{"status": "ok"})
-	})
+	// protected := router.Group("/api")
+	// token, _ := utils.GenerateToken(1, cfg.JWTSecret, cfg.JWTExpiresMin)
+	// log.Println("TEST TOKEN:", token)
+	// protected.GET("/me", func(c *gin.Context) {
+	// 	userID := c.GetUint("user_id")
+
+	// 	c.JSON(http.StatusOK, gin.H{
+	// 		"user_id": userID,
+	// 		"message": "auth middleware works",
+	// 	})
+	// })
 
 	log.Println("Server starting on port", cfg.AppPort)
 	if err := router.Run(":" + cfg.AppPort); err != nil {
