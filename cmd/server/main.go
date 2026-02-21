@@ -41,7 +41,9 @@ func main() {
 
 	router.Use(middleware.Recovery())
 	router.Use(middleware.Logger())
+	router.Use(middleware.AuthMiddleware(cfg.JWTSecret))
 
+	
 	router.GET("/health", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{"status": "ok"})
 	})
